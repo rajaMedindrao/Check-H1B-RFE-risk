@@ -44,10 +44,13 @@
     border-bottom: 1px solid var(--line);
   }
   .nav-inner { display: flex; align-items: center; justify-content: space-between; height: 64px; }
-  .logo { font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; font-weight: 400; color: var(--ink); letter-spacing: -0.02em; }
+  .logo { font-family: 'Instrument Serif', Georgia, serif; font-size: 26px; font-weight: 400; color: var(--ink); letter-spacing: -0.02em; display: flex; flex-direction: column; line-height: 1; }
+  .logo-tagline { font-family: 'Inter', sans-serif; font-size: 10px; font-weight: 500; color: var(--ink-mute); letter-spacing: 0.08em; text-transform: uppercase; margin-top: 3px; }
   .nav-links { display: flex; gap: 28px; align-items: center; }
   .nav-links a { color: var(--ink); text-decoration: none; font-size: 14px; font-weight: 500; }
   .nav-links a:hover { color: var(--accent); }
+  .nav-links a.btn { color: var(--bg); }
+  .nav-links a.btn:hover { color: white; }
   .btn {
     display: inline-block;
     background: var(--ink); color: var(--bg);
@@ -263,6 +266,24 @@
   }
   .reset-link:hover { color: var(--bg); }
 
+  /* HOW IT WORKS */
+  .how-section { padding: 80px 0; border-top: 1px solid var(--line); }
+  .how-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px; }
+  @media (max-width: 960px) { .how-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 600px) { .how-grid { grid-template-columns: 1fr; } }
+  .how-card {
+    background: var(--bg-card); border: 1px solid var(--line);
+    border-radius: var(--radius); padding: 28px;
+    position: relative; overflow: hidden;
+  }
+  .how-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+    background: var(--accent); opacity: 0.4;
+  }
+  .how-step { font-family: 'Instrument Serif', Georgia, serif; font-size: 36px; color: var(--accent); line-height: 1; margin-bottom: 16px; }
+  .how-card h4 { font-size: 17px; font-weight: 600; margin-bottom: 10px; }
+  .how-card p { font-size: 14px; color: var(--ink-soft); line-height: 1.6; }
+
   /* WHAT HAPPENS NEXT */
   .next-section { padding: 80px 0; border-top: 1px solid var(--line); }
   .next-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 40px; }
@@ -314,7 +335,7 @@
 <!-- NAV -->
 <nav>
   <div class="container nav-inner">
-    <div class="logo">alma</div>
+    <div class="logo">alma<span class="logo-tagline">Updated by Raja</span></div>
     <div class="nav-links">
       <a href="#calculator">Calculator</a>
       <a href="#how-it-works">How it works</a>
@@ -432,7 +453,7 @@
           <div class="q-block">
             <label class="q-label" for="soc_code">SOC code category</label>
             <select class="sel" id="soc_code" data-q="soc_code">
-              <option value="">— Select the closest SOC code —</option>
+              <option value="">Select the closest SOC code</option>
               <option value="safe_sw_dev">15-1252 · Software Developers</option>
               <option value="safe_data_sci">15-2051 · Data Scientists</option>
               <option value="safe_eng">17-20xx · Engineers (specific discipline)</option>
@@ -639,6 +660,39 @@
             <a href="#" class="reset-link" onclick="resetAll(event)">Reset assessment</a>
           </div>
         </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="how-section" id="how-it-works">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-eyebrow">Under the hood</div>
+      <h2>How the score is built.</h2>
+      <p>The calculator maps your petition inputs to the exact risk signals USCIS adjudicators look for — weighted by how often each triggers an RFE in practice.</p>
+    </div>
+    <div class="how-grid">
+      <div class="how-card">
+        <div class="how-step">01</div>
+        <h4>You answer 18 targeted questions</h4>
+        <p>Every question covers a documented RFE trigger: SOC code risk, wage-level alignment, job description specificity, degree-to-duty match, worksite structure, and filing history. Nothing superfluous.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-step">02</div>
+        <h4>Each answer maps to a weighted risk score</h4>
+        <p>Inputs are scored across five categories — Specialty Occupation (30 pts), Wage Level (20), Degree Alignment (20), Worksite (15), and Employer History (15) — for a 0–100 composite. Scores update in real time as you answer.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-step">03</div>
+        <h4>Compound risks are caught automatically</h4>
+        <p>Single flags are straightforward — but the model also detects dangerous combinations: Level 1 wage + 6+ years of experience, a generic JD paired with a high-scrutiny SOC code, or a first-time petitioner placing a beneficiary at a third-party client site.</p>
+      </div>
+      <div class="how-card">
+        <div class="how-step">04</div>
+        <h4>Every flag comes with a specific fix</h4>
+        <p>No vague warnings. Each flagged issue surfaces plain-English remediation — revised duty language, evidence bundles USCIS expects, or a recommendation to consult Alma counsel before filing. The goal is a petition that clears the risk threshold, not just a high score.</p>
       </div>
     </div>
   </div>
