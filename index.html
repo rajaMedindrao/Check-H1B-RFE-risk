@@ -101,6 +101,17 @@
 
   .meta span { display: block; }
 
+  .brand-updated {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--muted);
+    letter-spacing: 0.08em;
+    font-weight: 400;
+    text-transform: none;
+    margin-left: 4px;
+    opacity: 0.75;
+  }
+
   /* ----- HERO ----- */
   .hero {
     margin-bottom: 56px;
@@ -343,7 +354,7 @@
     margin-top: -32px;
   }
 
-  .gauge-pct { font-size: 22px; vertical-align: super; color: var(--muted); margin-left: 2px; }
+  .gauge-pct { font-size: 22px; vertical-align: top; position: relative; top: 2px; color: var(--muted); margin-left: 2px; }
 
   .risk-label {
     font-family: 'JetBrains Mono', monospace;
@@ -837,7 +848,7 @@
 
   <!-- ============= MASTHEAD ============= -->
   <div class="masthead">
-    <div class="brand">Alma · RFE Reduction Suite</div>
+    <div class="brand">Alma · RFE Reduction Suite <span class="brand-updated">· updated by Raja</span></div>
     <div class="meta">
       <span>PRODUCT VISION · v0.3</span>
       <span>PM INTERVIEW · CONFIDENTIAL</span>
